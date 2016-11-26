@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--自定义View属性-->
+    <declare-styleable name="CustomView">
+        <attr name="contentWidth" format="dimension" />
+        <attr name="contentHeight" format="dimension" />
+        <attr name="contentColor" format="color" />
+        <attr name="gravity" format="enum">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+            <enum name="center" value="2" />
+        </attr>
+    </declare-styleable>
+
+</resources>
