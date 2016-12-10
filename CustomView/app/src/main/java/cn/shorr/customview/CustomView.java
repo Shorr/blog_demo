@@ -16,12 +16,13 @@ import android.view.View;
 
 public class CustomView extends View {
 
+    /* 自定义属性 */
     private int mContentWidth;  //默认宽度,单位px
     private int mContentHeight;  //默认高度,单位px
     private int mContentColor;  //View的颜色
     private int mGravity;  //View的Gravity属性
 
-    private enum Measure {  //View测量宽、高的枚举
+    private enum MeasureOrientation {  //View测量方向（宽、高）的枚举
         WIDTH, HEIGHT
     }
 
@@ -52,7 +53,7 @@ public class CustomView extends View {
 
         try {
             mContentWidth = a.getDimensionPixelSize(R.styleable.CustomView_contentWidth, 0);
-            mContentHeight = a.getDimensionPixelOffset(R.styleable.CustomView_contentHeight, 0);
+            mContentHeight = a.getDimensionPixelSize(R.styleable.CustomView_contentHeight, 0);
             mContentColor = a.getColor(R.styleable.CustomView_contentColor, Color.TRANSPARENT);
             mGravity = a.getInteger(R.styleable.CustomView_gravity, -1);
         } finally {
@@ -74,8 +75,8 @@ public class CustomView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         //获取宽高的尺寸
-        int width = getMeasureSize(Measure.WIDTH, mContentWidth, widthMeasureSpec);
-        int height = getMeasureSize(Measure.HEIGHT, mContentHeight, heightMeasureSpec);
+        int width = getMeasureSize(MeasureOrientation.WIDTH, mContentWidth, widthMeasureSpec);
+        int height = getMeasureSize(MeasureOrientation.HEIGHT, mContentHeight, heightMeasureSpec);
         //设置测量尺寸
         setMeasuredDimension(width, height);
     }
@@ -83,12 +84,12 @@ public class CustomView extends View {
     /**
      * 得到宽度测量的尺寸大小
      *
-     * @param measure     测量的方向（宽高）
+     * @param orientation 测量的方向（宽高）
      * @param defalutSize 默认尺寸大小
      * @param measureSpec 测量的规则
      * @return 返回测量的尺寸
      */
-    private int getMeasureSize(Measure measure, int defalutSize, int measureSpec) {
+    private int getMeasureSize(MeasureOrientation orientation, int defalutSize, int measureSpec) {
         int result = defalutSize;
         int specMode = MeasureSpec.getMode(measureSpec);
         int specSize = MeasureSpec.getSize(measureSpec);
@@ -103,10 +104,10 @@ public class CustomView extends View {
                     result = defalutSize;
                     break;
                 }
-                if (measure == Measure.WIDTH) {
+                if (orientation == MeasureOrientation.WIDTH) {
                     //测量的宽
                     result = getPaddingLeft() + defalutSize + getPaddingRight();
-                } else if (measure == Measure.HEIGHT) {
+                } else if (orientation == MeasureOrientation.HEIGHT) {
                     //测量的高
                     result = getPaddingTop() + defalutSize + getPaddingBottom();
                 }
