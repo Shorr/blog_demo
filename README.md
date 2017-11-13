@@ -1,2 +1,2 @@
-# blog_demo
-Shorr's Blog Demo Code
+# notes_demo
+Shorr's Notes Demo Code
