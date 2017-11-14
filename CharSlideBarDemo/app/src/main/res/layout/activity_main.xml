@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--联系人列表-->
+    <ListView
+        android:id="@+id/contact_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp" />
+
+    <!--字符索引栏-->
+    <cn.shorr.widget.CharSlideBar
+        android:id="@+id/char_slider_bar"
+        android:layout_width="25dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        app:barBackground="#3f000000"
+        app:barChars="☆ABCDEFGHIJKLMNOPQRSTUVWXYZ#"
+        app:barTextColor="@android:color/black"
+        app:barTextSize="15sp" />
+
+    <!--字符指示视图-->
+    <cn.shorr.widget.CharIndicateView
+        android:id="@+id/char_indicate_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        app:indicateBackground="#5f000000"
+        app:indicateBackgroundRadius="5dp"
+        app:indicateTextColor="@android:color/white"
+        app:indicateTextSize="20sp" />
+
+</RelativeLayout>
